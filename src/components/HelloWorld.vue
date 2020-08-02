@@ -1,6 +1,14 @@
 <template>
   <v-row class="text-center">
     <v-col cols="12">
+      <sample-chart
+        :chart-data="chartData"
+        :options="chartOptions"
+        style="position: relative; height: 100%; width: 100%;"
+      />
+    </v-col>
+
+    <v-col cols="12">
       <v-img
         :src="require('../assets/logo.svg')"
         class="my-3"
@@ -80,10 +88,42 @@
 </template>
 
 <script>
+import SampleChart from '@/components/SampleChart.vue';
+
 export default {
   name: 'HelloWorld',
 
+  components: {
+    SampleChart,
+  },
+
   data: () => ({
+    chartData: {
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+      datasets: [
+        {
+          label: 'GitHub Commits',
+          borderColor: '#f87979',
+          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+          fill: false,
+          lineTension: 0,
+        },
+      ],
+    },
+    chartOptions: { responsive: true, maintainAspectRatio: false },
     ecosystem: [
       {
         text: 'vuetify-loader',
