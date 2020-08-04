@@ -1,11 +1,7 @@
 <template>
   <v-row class="text-center">
     <v-col cols="12">
-      <sample-chart
-        :chart-data="chartData"
-        :options="chartOptions"
-        style="position: relative; height: 100%; width: 100%;"
-      />
+      <sample-chart :chart-data="chartData" :options="chartOptions" />
     </v-col>
 
     <v-col cols="12">
@@ -97,84 +93,131 @@ export default {
     SampleChart,
   },
 
-  data: () => ({
-    chartData: {
-      labels: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ],
-      datasets: [
+  data() {
+    return {
+      chartData: {
+        labels: [
+          '08:00h',
+          '09:00h',
+          '10:00h',
+          '11:00h',
+          '12:00h',
+          '13:00h',
+          '14:00h',
+          '15:00h',
+          '16:00h',
+        ],
+        datasets: [
+          {
+            label: 'LP 1',
+            borderColor: this.$vuetify.theme.currentTheme.primary,
+            backgroundColor: this.$vuetify.theme.currentTheme.primary,
+            data: [1, 2, 0, 4, 0, 0, 2, 0, 0],
+            fill: false,
+            lineTension: 0,
+          },
+          {
+            label: 'LP2',
+            borderColor: this.$vuetify.theme.currentTheme.secondary,
+            backgroundColor: this.$vuetify.theme.currentTheme.secondary,
+            data: [null, null, 0, 1, 1, 0, 0, 0, 0],
+            fill: false,
+            lineTension: 0,
+            pointStyle: 'rectRot',
+          },
+        ],
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        elements: {
+          point: {
+            borderWidth: 5,
+          },
+        },
+        legend: {
+          position: 'bottom',
+          align: 'start',
+          labels: {
+            usePointStyle: true,
+            boxWidth: 5,
+          },
+        },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
+                // drawBorder: false,
+                drawOnChartArea: false,
+                zeroLineWidth: 0,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              gridLines: {
+                drawBorder: false,
+              },
+              ticks: {
+                precision: 0,
+              },
+            },
+          ],
+        },
+      },
+      ecosystem: [
         {
-          label: 'GitHub Commits',
-          borderColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
-          fill: false,
-          lineTension: 0,
+          text: 'vuetify-loader',
+          href: 'https://github.com/vuetifyjs/vuetify-loader',
+        },
+        {
+          text: 'github',
+          href: 'https://github.com/vuetifyjs/vuetify',
+        },
+        {
+          text: 'awesome-vuetify',
+          href: 'https://github.com/vuetifyjs/awesome-vuetify',
         },
       ],
-    },
-    chartOptions: { responsive: true, maintainAspectRatio: false },
-    ecosystem: [
-      {
-        text: 'vuetify-loader',
-        href: 'https://github.com/vuetifyjs/vuetify-loader',
-      },
-      {
-        text: 'github',
-        href: 'https://github.com/vuetifyjs/vuetify',
-      },
-      {
-        text: 'awesome-vuetify',
-        href: 'https://github.com/vuetifyjs/awesome-vuetify',
-      },
-    ],
-    importantLinks: [
-      {
-        text: 'Documentation',
-        href: 'https://vuetifyjs.com',
-      },
-      {
-        text: 'Chat',
-        href: 'https://community.vuetifyjs.com',
-      },
-      {
-        text: 'Made with Vuetify',
-        href: 'https://madewithvuejs.com/vuetify',
-      },
-      {
-        text: 'Twitter',
-        href: 'https://twitter.com/vuetifyjs',
-      },
-      {
-        text: 'Articles',
-        href: 'https://medium.com/vuetify',
-      },
-    ],
-    whatsNext: [
-      {
-        text: 'Explore components',
-        href: 'https://vuetifyjs.com/components/api-explorer',
-      },
-      {
-        text: 'Select a layout',
-        href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-      },
-      {
-        text: 'Frequently Asked Questions',
-        href:
-          'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-      },
-    ],
-  }),
+      importantLinks: [
+        {
+          text: 'Documentation',
+          href: 'https://vuetifyjs.com',
+        },
+        {
+          text: 'Chat',
+          href: 'https://community.vuetifyjs.com',
+        },
+        {
+          text: 'Made with Vuetify',
+          href: 'https://madewithvuejs.com/vuetify',
+        },
+        {
+          text: 'Twitter',
+          href: 'https://twitter.com/vuetifyjs',
+        },
+        {
+          text: 'Articles',
+          href: 'https://medium.com/vuetify',
+        },
+      ],
+      whatsNext: [
+        {
+          text: 'Explore components',
+          href: 'https://vuetifyjs.com/components/api-explorer',
+        },
+        {
+          text: 'Select a layout',
+          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
+        },
+        {
+          text: 'Frequently Asked Questions',
+          href:
+            'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+        },
+      ],
+    };
+  },
 };
 </script>

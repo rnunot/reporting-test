@@ -47,7 +47,7 @@ export default {
 
   data() {
     return {
-      drawer: true,
+      drawer: null,
       items: [
         {
           routeName: 'Home',
