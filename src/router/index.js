@@ -4,10 +4,16 @@ import Home from '@/views/Home.vue';
 import Login from '@/views/Login.vue';
 import AppLayout from '@/components/layouts/AppLayout.vue';
 import LoginLayout from '@/components/layouts/LoginLayout.vue';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: '/test',
+    name: 'Test',
+    component: HelloWorld,
+  },
   {
     path: '/',
     component: AppLayout,

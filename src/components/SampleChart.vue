@@ -7,6 +7,8 @@
 <script>
 import ECharts from 'vue-echarts';
 import 'echarts/lib/chart/line';
+import 'echarts/lib/component/legend';
+import 'echarts/lib/component/tooltip';
 
 export default {
   components: {
@@ -30,5 +32,12 @@ export default {
     width: 100%;
     height: 100%;
   }
+}
+</style>
+
+<style lang="scss">
+.echarts {
+  width: 100%;
+  min-height: 500px;
 }
 </style>
