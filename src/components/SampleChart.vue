@@ -1,15 +1,34 @@
+<template>
+  <div style="sample-chart">
+    <e-charts :options="options" />
+  </div>
+</template>
+
 <script>
-import { Line, mixins } from 'vue-chartjs';
+import ECharts from 'vue-echarts';
+import 'echarts/lib/chart/line';
 
 export default {
-  extends: Line,
-  mixins: [mixins.reactiveProp],
-  props: ['options'],
-
-  mounted() {
-    this.renderChart(this.chartData, this.options);
+  components: {
+    ECharts,
+  },
+  props: {
+    options: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.sample-chart {
+  width: 100%;
+  min-height: 500px;
+
+  & >>> .echarts {
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>

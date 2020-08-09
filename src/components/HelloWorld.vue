@@ -1,7 +1,7 @@
 <template>
   <v-row class="text-center">
     <v-col cols="12">
-      <sample-chart :chart-data="chartData" :options="chartOptions" />
+      <sample-chart :options="chartOptions" />
     </v-col>
 
     <v-col cols="12">
@@ -26,60 +26,6 @@
         >
       </p>
     </v-col>
-
-    <v-col class="mb-5" cols="12">
-      <h2 class="headline font-weight-bold mb-3">
-        What's next?
-      </h2>
-
-      <v-row justify="center">
-        <a
-          v-for="(next, i) in whatsNext"
-          :key="i"
-          :href="next.href"
-          class="subheading mx-3"
-          target="_blank"
-        >
-          {{ next.text }}
-        </a>
-      </v-row>
-    </v-col>
-
-    <v-col class="mb-5" cols="12">
-      <h2 class="headline font-weight-bold mb-3">
-        Important Links
-      </h2>
-
-      <v-row justify="center">
-        <a
-          v-for="(link, i) in importantLinks"
-          :key="i"
-          :href="link.href"
-          class="subheading mx-3"
-          target="_blank"
-        >
-          {{ link.text }}
-        </a>
-      </v-row>
-    </v-col>
-
-    <v-col class="mb-5" cols="12">
-      <h2 class="headline font-weight-bold mb-3">
-        Ecosystem
-      </h2>
-
-      <v-row justify="center">
-        <a
-          v-for="(eco, i) in ecosystem"
-          :key="i"
-          :href="eco.href"
-          class="subheading mx-3"
-          target="_blank"
-        >
-          {{ eco.text }}
-        </a>
-      </v-row>
-    </v-col>
   </v-row>
 </template>
 
@@ -95,6 +41,58 @@ export default {
 
   data() {
     return {
+      chartOptions: {
+        color: [
+          this.$vuetify.theme.currentTheme.primary,
+          this.$vuetify.theme.currentTheme.secondary,
+          this.$vuetify.theme.currentTheme.tertiary,
+        ],
+        legend: {},
+        tooltip: {},
+        xAxis: {
+          type: 'category',
+        },
+        yAxis: {
+          type: 'value',
+          splitLine: false,
+        },
+        dataset: {
+          source: [
+            [
+              'layer picker',
+              '08:00h',
+              '09:00h',
+              '10:00h',
+              '11:00h',
+              '12:00h',
+              '13:00h',
+              '14:00h',
+              '15:00h',
+              '16:00h',
+            ],
+            ['LP 1', 1, 2, 0, 4, 0, 0, 2, 0, 0],
+            ['LP 2', null, null, 0, 1, 1, 0, 0, 0, 0],
+          ],
+        },
+        series: [
+          {
+            type: 'line',
+            smooth: true,
+            seriesLayoutBy: 'row',
+            lineStyle: {
+              width: 4,
+            },
+          },
+          {
+            type: 'line',
+            smooth: true,
+            seriesLayoutBy: 'row',
+            lineStyle: {
+              width: 4,
+            },
+          },
+        ],
+      },
       chartData: {
         labels: [
           '08:00h',
@@ -127,7 +125,7 @@ export default {
           },
         ],
       },
-      chartOptions: {
+      chartOptions2: {
         responsive: true,
         maintainAspectRatio: false,
         elements: {
@@ -166,57 +164,6 @@ export default {
           ],
         },
       },
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href:
-            'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
     };
   },
 };
